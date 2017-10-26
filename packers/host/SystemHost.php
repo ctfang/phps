@@ -76,6 +76,8 @@ class SystemHost
                     if (count($arr) == 2 && '' == $arr[1]) {
                         unset($arrHost[$key]);
                     }
+                }elseif ( empty($str) ){
+                    unset($arrHost[$key]);
                 }
             }
             $write = @file_put_contents($this->save, implode("\n", $arrHost), LOCK_EX);
