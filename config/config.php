@@ -11,5 +11,7 @@ return [
     \Command\Docker\DockerSaveCommand::class,
     \Command\Docker\DockerClearCommand::class,
     \Command\CreateCommand::class,
-
+    \Command\Host\HostListCommand::class,
+    \Command\Host\HostDeleteCommand::class,
+    \Command\Host\HostSetCommand::class,
 ];
