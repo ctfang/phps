@@ -1,0 +1,29 @@
+{
+  "name": "selden1992/cmd",
+  "description": "framework",
+  "license": "proprietary",
+  "type": "project",
+  "authors": [
+    {
+      "name": "ming yue you se",
+      "email": "2206582181@qq.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Command\\": "cmd/",
+      "Packers\\":"packers/"
+    },
+    "classmap":["src/"]
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  },
+  "require": {
+    "symfony/var-dumper": "^3.3",
+    "symfony/console": "~3.3"
+  }
+}
