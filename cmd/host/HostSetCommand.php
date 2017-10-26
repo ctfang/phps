@@ -30,6 +30,18 @@ class HostSetCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $ip     = $input->getArgument('ip');
+        $arrIp  = explode('.',$ip);
+        if( count($arrIp)!=4 ){
+            $output->writeln("<error>设置失败</error>");
+            return false;
+        }
+        foreach ($arrIp as $num){
+            if(!is_numeric($num)){
+                $output->writeln("<error>设置失败</error>");
+                return false;
+            }
+        }
+
         $domain = $input->getArgument('domain');
 
         $isOk   = (new SystemHost())->save($ip,$domain);
