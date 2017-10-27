@@ -42,8 +42,15 @@ mv phps.bat moon.bat
 
 // 查看系统host的设置
 phps host:list
+
 // 查看docker运行细节，名称，ip等
 phps docker:show
+
+// 导入已有的apache配置
+phps apache:inport
+
+// 从web文件生成系统host
+phps web:host --ip=127.0.0.1
 
 // 其他命令查看帮助命令
 ……
