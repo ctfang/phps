@@ -20,6 +20,7 @@ class ApacheImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $list      = $sitesEnabled = [];
         $webConfig = \Config::get('web');
         $sitesPath = $webConfig['sites-path'];
         foreach (scandir($sitesPath) as $file) {
@@ -34,13 +35,13 @@ class ApacheImportCommand extends Command
             foreach ($arrTemp as $string) {
                 $string = trim($string);
                 if (strpos($string, '<VirtualHost ') === 0) {
-                    $string = @end(explode(':', $string));
-                    $config['port'] = strstr($string,'>',true);
+                    $string         = @end(explode(':', $string));
+                    $config['port'] = strstr($string, '>', true);
                 } elseif (strpos($string, 'ServerAlias ') === 0) {
                     $string = @end(explode('ServerAlias', $string));
-                    $arr    = explode(' ',$string);
-                    foreach ($arr as $domain){
-                        if( $domain ){
+                    $arr    = explode(' ', $string);
+                    foreach ($arr as $domain) {
+                        if ($domain) {
                             $config['domain'][] = trim($domain);
                         }
                     }
@@ -50,5 +51,8 @@ class ApacheImportCommand extends Command
             }
             $sitesEnabled [] = $config;
         }
+        $webConfig['sites-enabled'] = $sitesEnabled;
+        $string  = var_export($webConfig,true);
+        file_put_contents(__DIR__.'/../../config/web.php',"<?php\nreturn {$string};\n",LOCK_EX);
     }
 }
