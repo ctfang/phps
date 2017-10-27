@@ -19,7 +19,7 @@ class DockerCommand extends Command
     protected function configure()
     {
         $this->setName('docker')
-            ->setDescription('docker-compose命令的别名')
+            ->setDescription('进入配置的目录，充当docker-compose命令')
             ->setHelp('docker-compose命令的别名')
             ->addArgument(
                 'options',

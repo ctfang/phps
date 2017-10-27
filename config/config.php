@@ -14,4 +14,6 @@ return [
     \Command\Host\HostListCommand::class,
     \Command\Host\HostDeleteCommand::class,
     \Command\Host\HostSetCommand::class,
+    \Command\Web\ApacheConfigCommand::class,
+    \Command\Web\ApacheImportCommand::class,
 ];
