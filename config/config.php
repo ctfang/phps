@@ -16,4 +16,5 @@ return [
     \Command\Host\HostSetCommand::class,
     \Command\Web\ApacheBuildCommand::class,
     \Command\Web\ApacheImportCommand::class,
+    \Command\web\WebHostCommand::class,
 ];
