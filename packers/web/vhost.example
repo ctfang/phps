@@ -15,4 +15,4 @@
     IncludeOptional /opt/docker/etc/httpd/vhost.common.d/*.conf
   </IfVersion>
 
-</VirtualHost>.
+</VirtualHost>

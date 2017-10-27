@@ -46,7 +46,7 @@ class ApacheImportCommand extends Command
                         }
                     }
                 } elseif (strpos($string, 'DocumentRoot ') === 0) {
-                    $config['document'] = trim(@end(explode('DocumentRoot', $string)));
+                    $config['document'] = str_replace('"','',trim(@end(explode('DocumentRoot', $string))));
                 }
             }
             $sitesEnabled [] = $config;

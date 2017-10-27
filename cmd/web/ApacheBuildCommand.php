@@ -25,7 +25,7 @@ class ApacheBuildCommand extends Command
         $sitesEnabled = $webConfig['sites-enabled'];
         $example      = file_get_contents($webConfig['vhost']);
         foreach ($sitesEnabled as $config){
-            $strConfig = str_replace(['[port]','[domain]','[document]'],[implode(' ',$config['port']),implode(' ',$config['domain']),$config['document']],$example);
+            $strConfig = str_replace(['[port]','[domain]','[document]'],[$config['port'],implode(' ',$config['domain']),$config['document']],$example);
             file_put_contents($sitesPath.'/'.reset($config['domain']).'.conf',$strConfig,LOCK_EX);
         }
     }
