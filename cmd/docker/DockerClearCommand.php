@@ -27,24 +27,60 @@ class DockerClearCommand extends Command
     }
 
 
+    /**
+     * 执行
+     *
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     * @author   明月有色 <2206582181@qq.com>
+     * @return int|null|void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $isAll     = $input->getOption('all');
         $docker    = new Docker();
         $images    = $docker->images();
-        if ($isAll === false) {
-            $output->writeln("<info>删除标签<none></info>");
-            foreach ($images as $image){
-                if( $image['tag']=='<none>' ){
-                    system('docker rmi '.$image['image id']);
+        $container = $docker->container();
+
+        foreach ($images as $image) {
+            if( $image['tag']!='<none>' ){
+                if($image['tag']!='latest'){
+                    $ims[$image['repository'].':latest'] = $image['repository'].':'.$image['tag'];
+                }else{
+                    $ims[$image['repository']] = $image['repository'];
                 }
             }
-        }else{
+        }
+
+        if ($isAll === false) {
+            $output->writeln("<info>删除container,没有关联的image的</info>");
+            foreach ($container as $con) {
+                if ( !isset($ims[$con['image']]) ) {
+                    system('docker rm ' . $con['names']);
+                }
+            }
+
+            $output->writeln("<info>删除标签<none></info>");
+            foreach ($images as $image) {
+                if ($image['tag'] == '<none>') {
+                    system('docker rmi ' . $image['image id']);
+                }
+            }
+        } else {
+            $output->writeln("<comment>确认删除container(y/n)</comment>");
+            $input = trim(fgets(STDIN));
+            if (in_array($input, ['y', 'Y'])) {
+                foreach ($container as $con) {
+                    system('docker rm ' . $con['names']);
+                    $output->writeln("<info>delete {$con['names']}</info>");
+                }
+            }
+
             $output->writeln("<comment>确认删除所有images(y/n)</comment>");
             $input = trim(fgets(STDIN));
-            if( in_array($input,['y','Y']) ){
-                foreach ($images as $image){
-                    system('docker rmi '.$image['image id']);
+            if (in_array($input, ['y', 'Y'])) {
+                foreach ($images as $image) {
+                    system('docker rmi ' . $image['image id']);
                     $output->writeln("<info>delete {$image['repository']}</info>");
                 }
             }
