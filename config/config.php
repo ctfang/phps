@@ -7,10 +7,14 @@
  */
 return [
     \Command\Docker\DockerShowCommand::class,
-    \Command\Docker\DockerCommand::class,
+    \Command\Docker\DockerComposeCommand::class,
     \Command\Docker\DockerSaveCommand::class,
     \Command\Docker\DockerClearCommand::class,
+    \Command\Docker\DockerDeleteCommand::class,
+
     \Command\CreateCommand::class,
+    \Command\InstallCommand::class,
+
     \Command\Host\HostListCommand::class,
     \Command\Host\HostDeleteCommand::class,
     \Command\Host\HostSetCommand::class,

@@ -14,11 +14,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DockerCommand extends Command
+class DockerComposeCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('docker')
+        $this->setName('docker-compose')
             ->setDescription('进入配置的目录，充当docker-compose命令')
             ->setHelp('docker-compose命令的别名')
             ->addArgument(

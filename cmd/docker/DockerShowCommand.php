@@ -28,7 +28,11 @@ class DockerShowCommand extends Command
     {
         $docker = new Docker();
         $list   = $docker->running();
+        $images = $docker->images();
         $io     = new SymfonyStyle($input,$output);
+        $output->writeln("<info>show all images</info>");
+        $io->table(array_keys(end($images)),$images);
+        $output->writeln("<info>show all container</info>");
         $io->table(array_keys(end($list)),$list);
     }
 }

@@ -15,8 +15,8 @@ class DockerClearCommand extends Command
     protected function configure()
     {
         $this->setName('docker:clear')
-            ->setDescription('清理docker')
-            ->setHelp('清理docker')
+            ->setDescription('批量清理docker')
+            ->setHelp('批量清理docker')
             ->addOption(
                 'all',
                 null,
@@ -67,7 +67,7 @@ class DockerClearCommand extends Command
                 }
             }
         } else {
-            $output->writeln("<comment>确认删除container(y/n)</comment>");
+            $output->write("<comment>确认删除container(y/n)</comment>");
             $input = trim(fgets(STDIN));
             if (in_array($input, ['y', 'Y'])) {
                 foreach ($container as $con) {
@@ -76,7 +76,7 @@ class DockerClearCommand extends Command
                 }
             }
 
-            $output->writeln("<comment>确认删除所有images(y/n)</comment>");
+            $output->write("<comment>确认删除所有images(y/n)</comment>");
             $input = trim(fgets(STDIN));
             if (in_array($input, ['y', 'Y'])) {
                 foreach ($images as $image) {
