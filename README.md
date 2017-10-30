@@ -23,6 +23,10 @@ D:\phps\bin\
 ````
 添加到系统的环境变量Path获取用户的Path当中，没有就新建
 
+也可以在管理员下执行命令安装
+````php
+php phps install
+````
 
 # 使用 
  
