@@ -23,6 +23,13 @@ class DockerClearCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'clear all images and container',
                 false
+            )
+            ->addOption(
+                'container',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'clear all images and container',
+                false
             );
     }
 
@@ -43,19 +50,26 @@ class DockerClearCommand extends Command
         $container = $docker->container();
 
         foreach ($images as $image) {
-            if( $image['tag']!='<none>' ){
-                if($image['tag']!='latest'){
-                    $ims[$image['repository'].':latest'] = $image['repository'].':'.$image['tag'];
-                }else{
+            if ($image['tag'] != '<none>') {
+                if ($image['tag'] != 'latest') {
+                    $ims[$image['repository'] . ':latest'] = $image['repository'] . ':' . $image['tag'];
+                } else {
                     $ims[$image['repository']] = $image['repository'];
                 }
             }
         }
 
-        if ($isAll === false) {
+        if ($input->getOption('container') !== false) {
+            // 删除所有容器
+            foreach ($container as $con) {
+                system('docker rm ' . $con['names']);
+                $output->writeln("<info>delete {$con['names']}</info>");
+            }
+        } else if ($isAll === false) {
+            // 指删除错误的
             $output->writeln("<info>删除container,没有关联的image的</info>");
             foreach ($container as $con) {
-                if ( !isset($ims[$con['image']]) ) {
+                if (!isset($ims[$con['image']])) {
                     system('docker rm ' . $con['names']);
                 }
             }

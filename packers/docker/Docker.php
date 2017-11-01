@@ -13,6 +13,7 @@ class Docker
 {
     public function running()
     {
+        $arrList = [];
         $baseCmd = 'docker inspect [name] | grep \'"IPAddress"\'';
 
         exec('docker ps -a', $arr);

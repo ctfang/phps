@@ -11,6 +11,7 @@ return [
     \Command\Docker\DockerSaveCommand::class,
     \Command\Docker\DockerClearCommand::class,
     \Command\Docker\DockerDeleteCommand::class,
+    \Command\Docker\DockerStopCommand::class,
 
     \Command\CreateCommand::class,
     \Command\InstallCommand::class,
