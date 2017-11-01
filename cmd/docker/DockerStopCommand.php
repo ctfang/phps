@@ -30,11 +30,10 @@ class DockerStopCommand extends Command
         $docker = new Docker();
         $list   = $docker->running();
         $io     = new SymfonyStyle($input, $output);
-        $output->writeln("<info>images</info>");
         if ($list) {
             foreach ($list as $con) {
+                $output->write("<info>stop </info>");
                 system('docker stop ' . $con['names']);
-                $output->writeln("<info>stop {$con['names']}</info>");
             }
         }
     }
