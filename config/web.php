@@ -14,9 +14,7 @@ return [
                 'www.test.app'
             ],
             'document'=>'/project',
-            'port'=>[
-                80
-            ]
+            'port'=>80
         ],
     ],
 ];
