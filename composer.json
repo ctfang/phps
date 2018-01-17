@@ -24,6 +24,7 @@
   },
   "require": {
     "symfony/var-dumper": "^3.3",
-    "symfony/console": "~3.3"
+    "symfony/console": "~3.3",
+    "vlucas/phpdotenv": "^2.4"
   }
 }

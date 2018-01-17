@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Config' => $baseDir . '/src/Config.php',
+    'Str' => $baseDir . '/src/Str.php',
 );

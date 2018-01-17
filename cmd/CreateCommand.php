@@ -37,7 +37,7 @@ class CreateCommand extends Command
         $arrInfo = pathinfo($name);
 
         $nameSpace = 'namespace Command\\' . str_replace('/', '\\', $arrInfo['dirname']);
-        $str       = file_get_contents(__DIR__ . '/../packers/command/DemoCommand.php');
+        $str       = file_get_contents(__DIR__ . '/../packers/Command/DemoCommand.php');
 
         $str       = str_replace(['namespace Command','DemoCommand'],[$nameSpace,$arrInfo['basename']],$str);
         $saveDir   = strtolower($saveDir.'/'.$arrInfo['dirname']);

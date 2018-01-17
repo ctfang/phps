@@ -11,6 +11,7 @@ return [
     \Command\Docker\DockerSaveCommand::class,
     \Command\Docker\DockerClearCommand::class,
     \Command\Docker\DockerDeleteCommand::class,
+    \Command\Docker\DockerSetHostCommand::class,
 
     \Command\CreateCommand::class,
     \Command\InstallCommand::class,
@@ -18,7 +19,5 @@ return [
     \Command\Host\HostListCommand::class,
     \Command\Host\HostDeleteCommand::class,
     \Command\Host\HostSetCommand::class,
-    \Command\Web\ApacheBuildCommand::class,
-    \Command\Web\ApacheImportCommand::class,
-    \Command\web\WebHostCommand::class,
+    \Command\Host\FromCommand::class
 ];

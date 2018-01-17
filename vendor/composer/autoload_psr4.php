@@ -12,5 +12,6 @@ return array(
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Packers\\' => array($baseDir . '/packers'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Command\\' => array($baseDir . '/cmd'),
 );

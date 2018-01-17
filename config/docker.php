@@ -10,9 +10,9 @@ return [
      * a, docker命令进入的目录
      * b, 进入命令使用docker-compose [option]
      */
-    'dir'=>'C:\docker\self',
+    'dir'=>env('DOCKER_COMPOSE'),
     /**
      * 到处images目录保存的目录
      */
-    'save_dir'=>'C:\data\docker-save',
+    'save_dir'=>env('DOCKER_SAVE'),
 ];

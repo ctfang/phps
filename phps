@@ -7,11 +7,14 @@
  * Time: 10:27
  */
 
-require __DIR__.'/vendor/autoload.php';
+define('ROOT_PATH',__DIR__);
+
+require ROOT_PATH.'/vendor/autoload.php';
+require ROOT_PATH.'/src/Init.php';
 
 $app = new \Symfony\Component\Console\Application();
 
-$config = include __DIR__ . '/config/config.php';
+$config = include ROOT_PATH . '/config/config.php';
 
 foreach ($config as $nameSpace){
     $app->add(new $nameSpace());

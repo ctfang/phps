@@ -24,6 +24,10 @@ class ComposerStaticInit40df6ac144e3d64e5ac973913b404be5
             'Psr\\Log\\' => 8,
             'Packers\\' => 8,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
         'C' => 
         array (
             'Command\\' => 8,
@@ -55,6 +59,10 @@ class ComposerStaticInit40df6ac144e3d64e5ac973913b404be5
         array (
             0 => __DIR__ . '/../..' . '/packers',
         ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
         'Command\\' => 
         array (
             0 => __DIR__ . '/../..' . '/cmd',
@@ -63,6 +71,7 @@ class ComposerStaticInit40df6ac144e3d64e5ac973913b404be5
 
     public static $classMap = array (
         'Config' => __DIR__ . '/../..' . '/src/Config.php',
+        'Str' => __DIR__ . '/../..' . '/src/Str.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
